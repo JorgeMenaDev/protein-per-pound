@@ -16,11 +16,12 @@ import {
   Plus,
   Share2,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { REPO_URL } from "@/lib/site";
+import { recipeSummary } from "@/lib/seo";
 import type { Recipe } from "@/lib/recipes";
 import { RecipeImagePlaceholder } from "./recipe-image-placeholder";
 
@@ -75,7 +76,7 @@ export default function RecipeCardFullDetail({ recipe }: { recipe: Recipe }) {
             <RecipeImagePlaceholder className="h-12 w-12" />
           )}
         </div>
-        <CardTitle className="mt-4 text-center text-2xl font-bold tracking-tight sm:text-3xl">{recipe.name}</CardTitle>
+        <h1 className="mt-4 text-center text-2xl font-bold leading-tight tracking-tight sm:text-3xl">{recipe.name}</h1>
         <div className="mb-3 mt-3 flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
           <span className="font-medium text-foreground">{recipe.author}</span>
           {recipe.cookTime && (
@@ -88,6 +89,7 @@ export default function RecipeCardFullDetail({ recipe }: { recipe: Recipe }) {
             </>
           )}
         </div>
+        <p className="mx-auto max-w-xl text-center text-sm text-muted-foreground">{recipeSummary(recipe, { withYield: false })}</p>
         <p className="text-center text-xs text-muted-foreground mt-2">
           Per serving (recipe makes {baseServings} {baseServings === 1 ? "serving" : "servings"})
         </p>
@@ -150,7 +152,7 @@ export default function RecipeCardFullDetail({ recipe }: { recipe: Recipe }) {
                     <p className="text-base leading-relaxed">{instructions[currentStep]}</p>
                   </div>
                 </TabsContent>
-                <TabsContent value="all-steps">
+                <TabsContent value="all-steps" forceMount className="data-[state=inactive]:hidden">
                   <ol className="mt-4 list-decimal list-inside space-y-3 text-sm sm:text-base">
                     {instructions.map((step, index) => (
                       <li key={index}>{step}</li>

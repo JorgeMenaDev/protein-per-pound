@@ -1,15 +1,39 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GithubIcon } from "@/components/icons/github-icon";
-import { REPO_URL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { AUTHOR, LOCALE, REPO_URL, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: `${SITE_NAME}: cheap protein and high-protein recipes`, template: `%s · ${SITE_NAME}` },
+  title: { default: `${SITE_NAME}: cheapest protein per gram in UK supermarkets`, template: `%s | ${SITE_NAME}` },
   description:
-    "Supermarket foods ranked by what a gram of protein costs, plus high-protein recipes with macros per serving. Open data, added by pull request.",
+    "UK supermarket foods ranked by what a gram of protein costs, plus high-protein recipes with macros per serving. Open data, added by pull request.",
+  applicationName: SITE_NAME,
+  authors: [AUTHOR],
+  creator: AUTHOR.name,
+  keywords: [
+    "cheapest protein UK",
+    "price per gram of protein",
+    "cheap protein sources",
+    "high protein recipes",
+    "protein per pound",
+    "Aldi protein",
+    "budget high protein food",
+  ],
+  category: "food",
+  openGraph: { siteName: SITE_NAME, locale: LOCALE, type: "website" },
+  twitter: { card: "summary_large_image" },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  alternates: { types: { "text/plain": "/llms.txt" } },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c0a09" },
+  ],
 };
 
 const NAV = [
@@ -19,7 +43,7 @@ const NAV = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-GB">
       <body className="min-h-dvh flex flex-col">
         <TooltipProvider delayDuration={300} skipDelayDuration={400}>
           <header className="site-header sticky top-0 z-40 border-b bg-background/75 backdrop-blur-xl backdrop-saturate-150">

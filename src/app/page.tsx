@@ -1,12 +1,27 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BicepsFlexed } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { JsonLd } from "@/components/json-ld";
 import { RecipeImagePlaceholder } from "@/features/recipes/components/recipe-image-placeholder";
 import { getProteinSources } from "@/lib/protein-sources";
 import { getRecipes } from "@/lib/recipes";
+import { websiteJsonLd, OG_BASE, TWITTER_BASE } from "@/lib/seo";
 import { REPO_URL, SITE_NAME } from "@/lib/site";
+
+export function generateMetadata(): Metadata {
+  const sources = getProteinSources();
+  const cheapest = sources[0];
+  const description = `${sources.length} UK supermarket foods ranked by price per gram of protein, from £${cheapest.p100.toFixed(2)} per 100 g, plus ${getRecipes().length} high-protein recipes with macros per serving.`;
+  return {
+    description,
+    alternates: { canonical: "/" },
+    openGraph: { ...OG_BASE, url: "/", description, images: [{ url: "/og/home", width: 1200, height: 630, alt: SITE_NAME }] },
+    twitter: { ...TWITTER_BASE, description, images: ["/og/home"] },
+  };
+}
 
 export default function Home() {
   const sources = getProteinSources();
@@ -19,6 +34,7 @@ export default function Home() {
 
   return (
     <div className="container pb-16">
+      <JsonLd data={websiteJsonLd()} />
       <section className="py-14 sm:py-20 text-center">
         <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] leading-[1.05]">{SITE_NAME}</h1>
         <p className="mx-auto mt-4 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
@@ -38,7 +54,7 @@ export default function Home() {
       <section className="grid gap-6 md:grid-cols-2">
         <Card className="flex flex-col">
           <CardHeader>
-            <CardTitle className="text-xl">Protein price table</CardTitle>
+            <h2 className="text-xl font-semibold leading-none tracking-tight">Protein price table</h2>
             <p className="text-sm text-muted-foreground">
               {sources.length} foods from UK supermarkets. The cheapest protein right now:
             </p>
@@ -64,7 +80,7 @@ export default function Home() {
 
         <Card className="flex flex-col">
           <CardHeader>
-            <CardTitle className="text-xl">Recipes</CardTitle>
+            <h2 className="text-xl font-semibold leading-none tracking-tight">Recipes</h2>
             <p className="text-sm text-muted-foreground">
               {recipes.length} high-protein recipes with calories and macros per serving.
             </p>

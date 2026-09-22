@@ -82,6 +82,12 @@ The rules the check enforces:
 
 Run the check locally with `bun install && bun run check`. The same check runs on every pull request.
 
+## Machine-readable
+
+- [`/data/protein-sources.csv`](https://protein-per-pound.vercel.app/data/protein-sources.csv): the price table as served by the site.
+- [`/llms.txt`](https://protein-per-pound.vercel.app/llms.txt) and [`/llms-full.txt`](https://protein-per-pound.vercel.app/llms-full.txt): an index and a single Markdown file with the full table and every recipe, for LLMs and agents.
+- Every page carries schema.org JSON-LD (`Recipe`, `Dataset`, `ItemList`, `BreadcrumbList`), and `/sitemap.xml` lists every recipe with its photo.
+
 ## Running the site
 
 ```
