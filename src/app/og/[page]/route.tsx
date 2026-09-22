@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { getProteinSources } from "@/lib/protein-sources";
 import { getRecipes } from "@/lib/recipes";
@@ -12,6 +14,8 @@ const PAGES = ["home", "table", "recipes"] as const;
 export function generateStaticParams() {
   return PAGES.map((page) => ({ page }));
 }
+
+const LOGO = `data:image/svg+xml;base64,${fs.readFileSync(path.join(process.cwd(), "public", "logo.svg")).toString("base64")}`;
 
 export async function GET(_: Request, { params }: { params: Promise<{ page: string }> }) {
   const { page } = await params;
@@ -34,9 +38,9 @@ export async function GET(_: Request, { params }: { params: Promise<{ page: stri
     page === "recipes"
       ? [...recipes]
           .sort((a, b) => perServing(b).protein - perServing(a).protein)
-          .slice(0, 4)
+          .slice(0, 3)
           .map((r) => [r.name, `${perServing(r).protein} g protein`])
-      : sources.slice(0, 4).map((s) => [s.name, `£${s.p100.toFixed(2)} / 100 g protein`]);
+      : sources.slice(0, 3).map((s) => [s.name, `£${s.p100.toFixed(2)} / 100 g protein`]);
 
   return new ImageResponse(
     (
@@ -47,13 +51,16 @@ export async function GET(_: Request, { params }: { params: Promise<{ page: stri
           display: "flex",
           flexDirection: "column",
           padding: "64px 72px",
+          position: "relative",
           background: "#0c0a09",
           color: "#f2f2f2",
           fontFamily: "sans-serif",
         }}
       >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={LOGO} width={150} height={150} style={{ position: "absolute", top: 56, right: 72, borderRadius: 34 }} alt="" />
         <div style={{ fontSize: 26, color: "#22c55e", fontWeight: 600 }}>{SITE_NAME}</div>
-        <div style={{ fontSize: 64, fontWeight: 700, letterSpacing: "-0.03em", marginTop: 20, lineHeight: 1.05 }}>
+        <div style={{ fontSize: 58, fontWeight: 700, letterSpacing: "-0.03em", marginTop: 20, lineHeight: 1.05, maxWidth: 860 }}>
           {heading}
         </div>
         <div style={{ fontSize: 30, color: "#a1a1aa", marginTop: 16 }}>{sub}</div>

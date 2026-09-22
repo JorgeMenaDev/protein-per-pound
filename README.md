@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="public/logo.svg" alt="Protein per Pound mascot: a pound coin pressing a barbell" width="128">
+
 # Protein per Pound
 
 **Cheap protein, ranked by what a gram actually costs, plus high-protein recipes to cook with it.**

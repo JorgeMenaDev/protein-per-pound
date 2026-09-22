@@ -36,6 +36,14 @@ export default function Home() {
     <div className="container pb-16">
       <JsonLd data={websiteJsonLd()} />
       <section className="py-14 sm:py-20 text-center">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/logo.svg"
+          alt="The Protein per Pound mascot: a pound coin pressing a barbell"
+          width={112}
+          height={112}
+          className="mx-auto mb-6 h-24 w-24 sm:h-28 sm:w-28 rounded-[1.6rem] shadow-lg shadow-sky-500/20 transition-transform duration-200 ease-out motion-safe:hover:-rotate-3 motion-safe:hover:scale-105"
+        />
         <h1 className="text-4xl sm:text-6xl font-bold tracking-[-0.03em] leading-[1.05]">{SITE_NAME}</h1>
         <p className="mx-auto mt-4 max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
           Supermarket foods ranked by what a gram of protein costs, and high-protein recipes to cook with them.

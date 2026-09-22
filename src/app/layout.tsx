@@ -48,7 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <TooltipProvider delayDuration={300} skipDelayDuration={400}>
           <header className="site-header sticky top-0 z-40 border-b bg-background/75 backdrop-blur-xl backdrop-saturate-150">
             <div className="container flex h-14 items-center gap-6">
-              <Link href="/" className="font-semibold tracking-tight">
+              <Link href="/" className="flex items-center gap-2 font-semibold tracking-tight">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/logo.svg" alt="" width={28} height={28} className="rounded-md" />
                 {SITE_NAME}
               </Link>
               <nav className="flex items-center gap-4 text-sm text-muted-foreground">
