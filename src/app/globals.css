@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fitbite theme tokens */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 142.1 76.2% 36.3%;
+    --radius: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 20 14.3% 4.1%;
+      --foreground: 0 0% 95%;
+      --card: 24 9.8% 10%;
+      --card-foreground: 0 0% 95%;
+      --popover: 0 0% 9%;
+      --popover-foreground: 0 0% 95%;
+      --primary: 142.1 70.6% 45.3%;
+      --primary-foreground: 144.9 80.4% 10%;
+      --secondary: 240 3.7% 15.9%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 0 0% 15%;
+      --muted-foreground: 240 5% 64.9%;
+      --accent: 12 6.5% 15.1%;
+      --accent-foreground: 0 0% 98%;
+      --border: 240 3.7% 15.9%;
+      --input: 240 3.7% 15.9%;
+      --ring: 142.4 71.8% 29.2%;
+    }
+  }
+
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: light dark;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+/* Full-screen photo viewer for the protein table */
+dialog.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+dialog.lightbox::backdrop {
+  background: rgba(10, 10, 12, 0.72);
+  backdrop-filter: blur(8px);
+  transition: opacity 220ms cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 1;
+}
+@starting-style {
+  dialog.lightbox[open]::backdrop {
+    opacity: 0;
+  }
+}
+dialog.lightbox.closing::backdrop {
+  opacity: 0;
+  transition-duration: 120ms;
+}
+dialog.lightbox img {
+  display: block;
+  max-width: min(94vw, 1400px);
+  max-height: 92vh;
+  border-radius: 12px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+  cursor: zoom-out;
+}
+dialog.lightbox[open] img {
+  transform: scale(1);
+  opacity: 1;
+  transition:
+    transform 220ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 220ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@starting-style {
+  dialog.lightbox[open] img {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+dialog.lightbox.closing img {
+  transform: scale(0.97);
+  opacity: 0;
+  transition:
+    transform 120ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 120ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.lightbox[open] img,
+  dialog.lightbox.closing img {
+    transform: none;
+    transition: opacity 160ms ease;
+  }
+  .active\:scale-\[0\.97\]:active {
+    transform: none;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  dialog.lightbox::backdrop {
+    background: rgba(10, 10, 12, 0.94);
+    backdrop-filter: none;
+  }
+  .site-header {
+    background: hsl(var(--background));
+    backdrop-filter: none;
+  }
+}
