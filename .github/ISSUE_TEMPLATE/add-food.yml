@@ -1,0 +1,56 @@
+name: New food or price
+description: Suggest a supermarket food for the price table, or an updated price.
+title: "Food: "
+labels: ["new food"]
+body:
+  - type: markdown
+    attributes:
+      value: Only numbers you can see on the label or receipt, please. Leave a field empty if you are not sure.
+  - type: input
+    id: name
+    attributes:
+      label: Product name
+      description: As printed on the shelf label.
+      placeholder: Everyday Essentials Chicken Breast Fillets
+    validations:
+      required: true
+  - type: input
+    id: store
+    attributes:
+      label: Store
+      placeholder: Aldi
+    validations:
+      required: true
+  - type: input
+    id: price
+    attributes:
+      label: Price (GBP)
+      placeholder: "4.25"
+    validations:
+      required: true
+  - type: input
+    id: package
+    attributes:
+      label: Package size
+      description: With the unit, g, ml or pieces.
+      placeholder: 1000 g
+    validations:
+      required: true
+  - type: input
+    id: protein
+    attributes:
+      label: Protein per 100 g (or per piece)
+      placeholder: "31.3"
+    validations:
+      required: true
+  - type: input
+    id: carbs
+    attributes:
+      label: Carbs per 100 g (optional)
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Photos or link
+      description: Drag in a photo of the shelf label and the nutrition panel, or link the shop's product page.
+    validations:
+      required: true

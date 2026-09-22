@@ -1,0 +1,24 @@
+name: Fix a number
+description: Report a wrong price, protein figure or recipe macro.
+title: "Fix: "
+labels: ["data fix"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Which food or recipe?
+      description: The name, or the page link.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong, and what is right?
+      placeholder: Salmon shows 0 g fat; a 300 g fillet has about 40 g.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: A label photo, a receipt, or a link.

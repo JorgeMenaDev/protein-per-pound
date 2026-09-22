@@ -1,0 +1,46 @@
+name: New recipe
+description: Suggest a high-protein recipe for the site.
+title: "Recipe: "
+labels: ["new recipe"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Recipe name
+    validations:
+      required: true
+  - type: input
+    id: servings
+    attributes:
+      label: Servings
+      placeholder: "2"
+    validations:
+      required: true
+  - type: textarea
+    id: ingredients
+    attributes:
+      label: Ingredients
+      description: One per line, with amount and unit.
+      placeholder: |
+        400 g chicken breast
+        1 whole lemon
+    validations:
+      required: true
+  - type: textarea
+    id: macros
+    attributes:
+      label: Macros for the whole recipe
+      description: Calories, protein, carbs and fat, and where they came from.
+      placeholder: 820 kcal, 96 g protein, 12 g carbs, 40 g fat (added up from the labels)
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps (optional)
+      description: One per line.
+  - type: textarea
+    id: photo
+    attributes:
+      label: Photo (optional)
+      description: Drag in a photo of the dish.

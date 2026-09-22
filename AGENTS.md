@@ -2,7 +2,7 @@
 
 Two datasets and a read-only Next.js site that shows them. `data/protein-sources.csv` holds supermarket foods ranked by the cost of a gram of protein. `recipes/*.md` holds one recipe per file, with its photo next to it. Schemas and the formula: `README.md`. The recipe schema in code: `src/lib/recipes.ts`. `bun run check` validates both datasets and runs in CI on every pull request and before every build.
 
-The site never writes data. Adding or changing anything means editing the files and opening a pull request.
+The site never writes data. Adding or changing anything means editing the files and opening a pull request. The contributor guide is `CONTRIBUTING.md`, with issue forms and a PR template in `.github/`; a schema change updates `src/lib/recipes.ts`, the README, `CONTRIBUTING.md` and every recipe together.
 
 ## Data entry: the price table
 

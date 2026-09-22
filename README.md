@@ -1,11 +1,44 @@
+<div align="center">
+
 # Protein per Pound
 
-Cheap protein, ranked by what a gram actually costs, plus high-protein recipes to cook with it. Both halves are plain files in this repo: a CSV of supermarket foods and one Markdown file per recipe. The site only reads them. Anything new arrives as a pull request.
+**Cheap protein, ranked by what a gram actually costs, plus high-protein recipes to cook with it.**
 
-Site: https://protein-per-pound.vercel.app
+[![check](https://github.com/JorgeMenaDev/protein-per-pound/actions/workflows/check.yml/badge.svg)](https://github.com/JorgeMenaDev/protein-per-pound/actions/workflows/check.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-16a34a.svg)](LICENSE)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-16a34a.svg)](CONTRIBUTING.md)
 
-- **Price table** (`/table`): supermarket foods ranked by the cost of a gram of protein.
-- **Recipes** (`/recipes`): high-protein meals with calories, protein, carbs and fat per serving, each with a full page.
+[Website](https://protein-per-pound.vercel.app) · [Price table](https://protein-per-pound.vercel.app/table) · [Recipes](https://protein-per-pound.vercel.app/recipes) · [Contributing](CONTRIBUTING.md)
+
+<img src=".github/assets/recipes.webp" alt="The recipes page: a grid of high-protein recipes with calories and macros per serving" width="820">
+
+</div>
+
+## What it is
+
+When the table launched, red split lentils cost £0.58 per 100 g of protein and frozen chicken breast £1.36. Both look cheap per kilo, yet the lentils give more than twice the protein for the same money. Protein per Pound makes that visible.
+
+- **Price table.** UK supermarket foods ranked by the price of one gram of protein, from shelf prices and nutrition labels.
+- **Recipes.** High-protein meals with calories, protein, carbs and fat per serving, a step-by-step view and a serving scaler.
+
+Everything on the site comes from plain files in this repo: one CSV for the table and one Markdown file per recipe. The site only reads them. There are no accounts and no database, and every change is a pull request anyone can review.
+
+<table>
+  <tr>
+    <td><img src=".github/assets/table.webp" alt="The price table, cheapest protein first"></td>
+    <td><img src=".github/assets/recipe.webp" alt="A recipe page with macros per serving"></td>
+  </tr>
+</table>
+
+## Contribute in five minutes
+
+You do not need to know Git.
+
+- **Tell us.** Open an issue with the [new food](https://github.com/JorgeMenaDev/protein-per-pound/issues/new?template=add-food.yml), [new recipe](https://github.com/JorgeMenaDev/protein-per-pound/issues/new?template=add-recipe.yml) or [fix a number](https://github.com/JorgeMenaDev/protein-per-pound/issues/new?template=fix-data.yml) form and a maintainer turns it into a pull request.
+- **Edit on GitHub.** Open [`data/protein-sources.csv`](data/protein-sources.csv) or any file in [`recipes/`](recipes), press the pencil, and GitHub opens the pull request for you. Every recipe page on the site has a "Suggest an edit" button that does this.
+- **Work locally.** `git clone`, `bun install`, `bun run check`, `bun run dev`.
+
+Good places to start: the recipes that have no steps yet, and prices from shops the table does not cover. [CONTRIBUTING.md](CONTRIBUTING.md) has the full guide, including the one rule that matters most: only add numbers you can prove.
 
 ## Adding a food
 
@@ -82,23 +115,40 @@ The rules the check enforces:
 
 Run the check locally with `bun install && bun run check`. The same check runs on every pull request.
 
-## Machine-readable
+## Use the data
 
-- [`/data/protein-sources.csv`](https://protein-per-pound.vercel.app/data/protein-sources.csv): the price table as served by the site.
+The data is MIT-licensed. Use it in your own apps, spreadsheets or research.
+
+- [`/data/protein-sources.csv`](https://protein-per-pound.vercel.app/data/protein-sources.csv): the price table.
 - [`/llms.txt`](https://protein-per-pound.vercel.app/llms.txt) and [`/llms-full.txt`](https://protein-per-pound.vercel.app/llms-full.txt): an index and a single Markdown file with the full table and every recipe, for LLMs and agents.
-- Every page carries schema.org JSON-LD (`Recipe`, `Dataset`, `ItemList`, `BreadcrumbList`), and `/sitemap.xml` lists every recipe with its photo.
+- Every page carries schema.org JSON-LD (`Recipe`, `Dataset`, `ItemList`, `BreadcrumbList`), and [`/sitemap.xml`](https://protein-per-pound.vercel.app/sitemap.xml) lists every recipe with its photo.
 
-## Running the site
+## Run it locally
+
+Needs [Bun](https://bun.sh).
 
 ```
 bun install
-bun run dev
+bun run dev      # http://localhost:3000
+bun run check    # validate the CSV and every recipe
+bun run build    # check + production build
 ```
 
-Next.js 15, Tailwind, and components carried over from the Fitbite app. Recipe photos are copied from `recipes/` to `public/recipes/` at build time.
+```
+data/protein-sources.csv      the price table
+recipes/<slug>.md, .webp      one recipe and its photo
+scripts/check.ts              the validator CI runs on every pull request
+src/lib/recipes.ts            the recipe schema (zod) and Markdown parser
+src/lib/seo.ts                titles, descriptions and JSON-LD
+src/app/                      Next.js 15 pages, sitemap, robots, llms.txt, social images
+```
 
-## Provenance
+Built with Next.js, Tailwind CSS, Radix UI and lucide icons. Pushes to `main` deploy to Vercel.
 
-The price table was extracted on 2026-09-22 from the Fitbite Convex databases and the protein source seed list of its v2 codebase. The first 21 recipes are Jorge Mena's own, exported the same day from his Fitbite account, with obvious typos in names fixed.
+## Where it came from
 
-Released under the MIT license.
+Protein per Pound started as two features of Fitbite, a food tracking app. On 2026-09-22 the price table was extracted from Fitbite's databases, merged with its seed list, and opened up here. The first 21 recipes are Jorge Mena's own, exported the same day, with obvious typos in names fixed.
+
+## License
+
+[MIT](LICENSE). The code and the data are free to use, change and share.
