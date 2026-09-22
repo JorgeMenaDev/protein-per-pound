@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Protein price table</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --fg: #1a1a1a;
+    --muted: #6b6b6b;
+    --line: #e2e2e2;
+    --bg: #fafafa;
+    --card: #ffffff;
+    --accent: #0a6b4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --fg: #ececec;
+      --muted: #9a9a9a;
+      --line: #2e2e2e;
+      --bg: #141414;
+      --card: #1c1c1c;
+      --accent: #4fd1a5;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1rem 4rem;
+    font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--fg);
+    background: var(--bg);
+  }
+  main { max-width: 980px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; letter-spacing: -0.01em; }
+  .sub { color: var(--muted); margin: 0 0 1.5rem; }
+  .sub a { color: inherit; }
+  .toolbar {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    margin-bottom: .75rem;
+  }
+  input[type="search"] {
+    flex: 1;
+    padding: .55rem .75rem;
+    font: inherit;
+    color: var(--fg);
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    outline: none;
+  }
+  input[type="search"]:focus { border-color: var(--accent); }
+  #count { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .table-wrap {
+    overflow-x: auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 860px; }
+  th, td { padding: .5rem .75rem; text-align: left; }
+  thead th {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--muted);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+  }
+  thead th:hover { color: var(--fg); }
+  thead th.sorted { color: var(--accent); }
+  tbody tr + tr td { border-top: 1px solid var(--line); }
+  tbody tr:hover { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; }
+  td.name { min-width: 240px; }
+  .unit { color: var(--muted); }
+  footer { margin-top: 1.5rem; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Protein price table</h1>
+  <p class="sub">What a gram of protein costs at the supermarket. Data from the legacy Fitbite app.
+    <a href="https://github.com/JorgeMenaDev/protein-price-table">Add an item on GitHub</a>.</p>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Filter items, e.g. lentils, tuna, whey" autocomplete="off">
+    <span id="count"></span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-key="name">Item</th>
+          <th data-key="store">Store</th>
+          <th data-key="price" class="num">Price</th>
+          <th data-key="size" class="num">Package</th>
+          <th data-key="protein" class="num">Protein</th>
+          <th data-key="carbs" class="num">Carbs</th>
+          <th data-key="ppg" class="num sorted">£ / g protein</th>
+          <th data-key="p100" class="num">£ / 100 g protein</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <footer id="footer"></footer>
+</main>
+<script>
+function parseCSV(text) {
+  const lines = text.trim().split("\n");
+  const header = splitLine(lines[0]);
+  return lines.slice(1).map((line) => {
+    const cells = splitLine(line);
+    const row = {};
+    header.forEach((h, i) => (row[h] = cells[i] ?? ""));
+    return row;
+  });
+}
+
+function splitLine(line) {
+  const out = [];
+  let cur = "";
+  let quoted = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') {
+      if (quoted && line[i + 1] === '"') { cur += '"'; i++; }
+      else quoted = !quoted;
+    } else if (c === "," && !quoted) {
+      out.push(cur);
+      cur = "";
+    } else cur += c;
+  }
+  out.push(cur);
+  return out;
+}
+
+function totalProtein(r) {
+  return r.package_unit === "piece"
+    ? r.package_size * r.protein_per_piece
+    : (r.package_size * r.protein_per_100g) / 100;
+}
+
+function num(v) {
+  return v === "" ? null : Number(v);
+}
+
+function toRow(r) {
+  const protein = totalProtein(r);
+  const ppg = protein > 0 ? Number(r.price_gbp) / protein : 0;
+  return {
+    name: r.name,
+    store: r.store,
+    price: Number(r.price_gbp),
+    size: Number(r.package_size),
+    unit: r.package_unit,
+    protein: num(r.package_unit === "piece" ? r.protein_per_piece : r.protein_per_100g),
+    proteinUnit: r.package_unit === "piece" ? "/piece" : "/100g",
+    carbs: num(r.carbs_per_100g),
+    ppg: r.price_per_g_protein !== "" ? Number(r.price_per_g_protein) : ppg,
+    p100: r.price_per_100g_protein !== "" ? Number(r.price_per_100g_protein) : ppg * 100,
+  };
+}
+
+const tbody = document.getElementById("rows");
+const countEl = document.getElementById("count");
+const searchEl = document.getElementById("search");
+let data = [];
+let sortKey = "ppg";
+let sortDir = 1;
+
+function render() {
+  const q = searchEl.value.trim().toLowerCase();
+  const filtered = data.filter(
+    (r) => !q || r.name.toLowerCase().includes(q) || r.store.toLowerCase().includes(q),
+  );
+  filtered.sort((a, b) => {
+    const x = a[sortKey];
+    const y = b[sortKey];
+    const cmp = typeof x === "number" && typeof y === "number"
+      ? x - y
+      : String(x).localeCompare(String(y));
+    return cmp * sortDir;
+  });
+  tbody.innerHTML = filtered
+    .map(
+      (r) => `<tr>
+        <td class="name">${escapeHtml(r.name)}</td>
+        <td>${escapeHtml(r.store)}</td>
+        <td class="num">£${r.price.toFixed(2)}</td>
+        <td class="num">${r.size} ${r.unit}</td>
+        <td class="num">${r.protein ?? ""} <span class="unit">${r.protein !== null ? r.proteinUnit : ""}</span></td>
+        <td class="num">${r.carbs ?? ""}</td>
+        <td class="num">£${Number(r.ppg).toFixed(4)}</td>
+        <td class="num">£${Number(r.p100).toFixed(2)}</td>
+      </tr>`,
+    )
+    .join("");
+  countEl.textContent = `${filtered.length} / ${data.length}`;
+}
+
+function escapeHtml(s) {
+  return s.replace(/[&<>"']/g, (c) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+  }[c]));
+}
+
+document.querySelectorAll("thead th").forEach((th) => {
+  th.addEventListener("click", () => {
+    const key = th.dataset.key;
+    if (sortKey === key) sortDir = -sortDir;
+    else { sortKey = key; sortDir = 1; }
+    document.querySelectorAll("thead th").forEach((h) => h.classList.remove("sorted"));
+    th.classList.add("sorted");
+    render();
+  });
+});
+
+searchEl.addEventListener("input", render);
+
+fetch("data/protein-sources.csv")
+  .then((r) => r.text())
+  .then((text) => {
+    data = parseCSV(text).map(toRow);
+    render();
+  });
+</script>
+</body>
+</html>
