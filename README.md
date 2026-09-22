@@ -20,6 +20,8 @@ Everything lives in [`data/protein-sources.csv`](data/protein-sources.csv), one 
 | carbs_per_100g | grams of carbs per 100 g, when known |
 | price_per_g_protein | derived: cost of one gram of protein |
 | price_per_100g_protein | derived: cost of 100 g of protein |
+| date_added | date the row entered this table (YYYY-MM-DD) |
+| image_url | optional URL of a product photo, shown as a thumbnail that opens full screen |
 
 The derived columns follow the original Fitbite formula:
 
@@ -32,7 +34,7 @@ price_per_100g_protein = price_per_g_protein * 100
 
 ## Adding an item
 
-Edit `data/protein-sources.csv` and open a pull request. Fill in name, store, price_gbp, package_size, package_unit, and protein_per_100g (or protein_per_piece for piece packages). The derived columns can be left blank, the viewer computes them either way. Keep one row per product and package size.
+Edit `data/protein-sources.csv` and open a pull request. Fill in name, store, price_gbp, package_size, package_unit, and protein_per_100g (or protein_per_piece for piece packages), plus date_added. The derived columns can be left blank, the viewer computes them either way. Keep one row per product and package size. `image_url` is optional: any stable URL to a product photo works (longest edge around 1600 px keeps the repo and the page fast), and rows without one render without a thumbnail.
 
 ## Provenance
 

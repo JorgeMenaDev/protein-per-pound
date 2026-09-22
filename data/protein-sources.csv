@@ -1,54 +1,55 @@
-name,store,price_gbp,package_size,package_unit,protein_per_100g,protein_per_piece,carbs_per_100g,price_per_g_protein,price_per_100g_protein
-Red Split Lentils (Laila),Amazon,3.00,2000,g,26,,,0.0058,0.58
-Scottish Porridge Oats,Aldi,1.09,1000,g,12.3,,,0.0089,0.89
-Chickpeas (Laila),Amazon,3.75,2000,g,21,,,0.0089,0.89
-Green Lentils (Laila),Amazon,5.53,2000,g,24,,,0.0115,1.15
-Frozen Everyday Essentials Chicken Breast Fillet,Aldi,4.25,1000,g,31.3,,0.1,0.0136,1.36
-Everyday Essentials Unsmoked Back Bacon,Aldi,4.49,1000,g,26.7,,1,0.0168,1.68
-Princes Sardines sunflower oil,Aldi,0.47,120,g,23,,0.1,0.0170,1.70
-Can of Tuna Chunks in Brine,Aldi,2.59,580,g,24.9,,0,0.0179,1.79
-Everyday Essentials Unsmoked Gammon Joint,Aldi,4.29,1107,g,21.2,,1,0.0183,1.83
-Sardines in Tomato Sauce,Aldi,0.47,120,g,20.5,,,0.0191,1.91
-White Fish Fillets,Aldi,4.49,1000,g,22.7,,0.1,0.0198,1.98
-Everyday Essentials - Back / Streaky Bacon,Aldi,1.45,275,g,26.3,,,0.0200,2.00
-White Fish Fillets,Aldi,2.49,520,g,22.7,,,0.0211,2.11
-Ashfields British Pork Shoulder Joint,Aldi,5.79,1528,g,18,,1,0.0211,2.11
-Premium Baked Beans (Bramwells),Aldi,0.41,410,g,4.7,,,0.0213,2.13
-Everyday Essentials Cottage Cheese,Aldi,0.79,300,g,12.3,,,0.0214,2.14
-Emporium - British Mature 50% lighter,Aldi,2.69,400,g,29.9,,,0.0225,2.25
-Cottage Cheese,Aldi,1.15,300,g,17,,,0.0225,2.25
-Large Gammon Joint,Aldi,6.69,1300,g,21.2,,0,0.0243,2.43
-The Fishmonger Tuna Chunks in Brine - 4 pack,Aldi,2.49,4,piece,,24.4,0.1,0.0255,2.55
-Long life Skimmed Milk,Aldi,0.89,1000,ml,3.4,,,0.0262,2.62
-Quark,Aldi,0.85,250,g,12.3,,,0.0276,2.76
-Pink Salmon,Aldi,1.39,213,g,23.6,,,0.0277,2.77
-British Chicken Breast Fillet 2kg,Aldi,11.99,2000,g,21.5,,,0.0279,2.79
-Aldi emporium British mature cheddar,Aldi,2.79,400,g,25,,2,0.0279,2.79
-10% Beef Mince,Aldi,3.19,500,g,21.9,,0,0.0291,2.91
-25% Beef Mince,Aldi,2.59,500,g,17.7,,,0.0293,2.93
-British Range 15 Mixed Size Eggs,Aldi,2.69,15,piece,,6,0.6,0.0299,2.99
-British Chicken Thigh Fillets,Aldi,5.19,900,g,18.9,,0,0.0305,3.05
-30 eggs,Local Shop,6.00,1800,g,10.8,,,0.0309,3.09
-Tofu,Aldi,0.89,200,g,14.1,,,0.0316,3.16
-2% Fat Turkey Mince,Aldi,3.99,500,g,25,,0,0.0319,3.19
-Ashfields Chicken Breast Fillets,Aldi,4.49,650,g,21.5,,0.1,0.0321,3.21
-Ashfields British Pork Loint Joint,Aldi,9.43,1628,g,18,,0.1,0.0322,3.22
-Optimum Nutrition Gold Standard Whey - Banana Cream,Amazon,58.00,2280,g,79,,5,0.0322,3.22
-Can Tuna Steak,Aldi,0.99,110,g,27.7,,,0.0325,3.25
-Oakhurst - Turkey Rashers,Aldi,1.59,150,g,32.1,,,0.0330,3.30
-Optimum Nutrition Gold Standard Whey Protein,Amazon,23.70,900,g,79,,,0.0333,3.33
-Protein Chicken Mini Fillets,Aldi,2.99,340,g,25.9,,,0.0340,3.40
-Ashfields Beef Mince 20% fat,Aldi,3.25,500,g,18.6,,0.2,0.0349,3.49
-Basa Fillets,Aldi,2.39,380,g,17.9,,,0.0351,3.51
-FOUR SEASONS Broccoli Florets,Aldi,1.19,1000,g,3.3,,2.6,0.0361,3.61
-3% Fat Beef Mince,Aldi,7.79,1000,g,21.5,,,0.0362,3.62
-0% Fat Authentic Greek Yogurt,Aldi,1.89,500,g,10.4,,,0.0363,3.63
-Almonds,Aldi,1.69,200,g,21.2,,,0.0399,3.99
-3% Beef Meatballs,Aldi,3.19,340,g,22,,,0.0426,4.26
-Tiba - Tempeh,Aldi,1.99,200,g,22,,,0.0452,4.52
-Ashfields Lean Diced Beef,Aldi,7.59,700,g,22.5,,0.1,0.0482,4.82
-Frozen Salmon Fillets,Aldi,6.99,480,g,28.7,,,0.0507,5.07
-Anchovy Fillets in Olive,Aldi,0.65,50,g,25.2,,,0.0516,5.16
-Serrano Ham,Aldi,1.89,100,g,33.2,,,0.0569,5.69
-Ashfield Beef Brisket,Aldi,13.55,1068,g,18,,0.5,0.0705,7.05
-Kefir,Aldi,1.99,750,ml,3.4,,,0.0780,7.80
+name,store,price_gbp,package_size,package_unit,protein_per_100g,protein_per_piece,carbs_per_100g,price_per_g_protein,price_per_100g_protein,date_added,image_url
+Red Split Lentils (Laila),Amazon,3.00,2000,g,26,,,0.0058,0.58,2026-09-22,
+Scottish Porridge Oats,Aldi,1.09,1000,g,12.3,,,0.0089,0.89,2026-09-22,
+Chickpeas (Laila),Amazon,3.75,2000,g,21,,,0.0089,0.89,2026-09-22,
+Green Lentils (Laila),Amazon,5.53,2000,g,24,,,0.0115,1.15,2026-09-22,
+Frozen Everyday Essentials Chicken Breast Fillet,Aldi,4.25,1000,g,31.3,,0.1,0.0136,1.36,2026-09-22,
+Everyday Essentials Unsmoked Back Bacon,Aldi,4.49,1000,g,26.7,,1,0.0168,1.68,2026-09-22,
+Princes Sardines sunflower oil,Aldi,0.47,120,g,23,,0.1,0.0170,1.70,2026-09-22,
+Can of Tuna Chunks in Brine,Aldi,2.59,580,g,24.9,,0,0.0179,1.79,2026-09-22,
+Everyday Essentials Unsmoked Gammon Joint,Aldi,4.29,1107,g,21.2,,1,0.0183,1.83,2026-09-22,
+Sardines in Tomato Sauce,Aldi,0.47,120,g,20.5,,,0.0191,1.91,2026-09-22,
+White Fish Fillets,Aldi,4.49,1000,g,22.7,,0.1,0.0198,1.98,2026-09-22,
+Everyday Essentials - Back / Streaky Bacon,Aldi,1.45,275,g,26.3,,,0.0200,2.00,2026-09-22,
+White Fish Fillets,Aldi,2.49,520,g,22.7,,,0.0211,2.11,2026-09-22,
+Ashfields British Pork Shoulder Joint,Aldi,5.79,1528,g,18,,1,0.0211,2.11,2026-09-22,
+Premium Baked Beans (Bramwells),Aldi,0.41,410,g,4.7,,,0.0213,2.13,2026-09-22,
+Everyday Essentials Cottage Cheese,Aldi,0.79,300,g,12.3,,,0.0214,2.14,2026-09-22,
+Emporium - British Mature 50% lighter,Aldi,2.69,400,g,29.9,,,0.0225,2.25,2026-09-22,
+Cottage Cheese,Aldi,1.15,300,g,17,,,0.0225,2.25,2026-09-22,
+Large Gammon Joint,Aldi,6.69,1300,g,21.2,,0,0.0243,2.43,2026-09-22,
+The Fishmonger Tuna Chunks in Brine - 4 pack,Aldi,2.49,4,piece,,24.4,0.1,0.0255,2.55,2026-09-22,
+Long life Skimmed Milk,Aldi,0.89,1000,ml,3.4,,,0.0262,2.62,2026-09-22,
+Quark,Aldi,0.85,250,g,12.3,,,0.0276,2.76,2026-09-22,
+Pink Salmon,Aldi,1.39,213,g,23.6,,,0.0277,2.77,2026-09-22,
+British Chicken Breast Fillet 2kg,Aldi,11.99,2000,g,21.5,,,0.0279,2.79,2026-09-22,
+Aldi emporium British mature cheddar,Aldi,2.79,400,g,25,,2,0.0279,2.79,2026-09-22,
+10% Beef Mince,Aldi,3.19,500,g,21.9,,0,0.0291,2.91,2026-09-22,
+25% Beef Mince,Aldi,2.59,500,g,17.7,,,0.0293,2.93,2026-09-22,
+British Range 15 Mixed Size Eggs,Aldi,2.69,15,piece,,6,0.6,0.0299,2.99,2026-09-22,
+British Chicken Thigh Fillets,Aldi,5.19,900,g,18.9,,0,0.0305,3.05,2026-09-22,
+30 eggs,Local Shop,6.00,1800,g,10.8,,,0.0309,3.09,2026-09-22,
+Tofu,Aldi,0.89,200,g,14.1,,,0.0316,3.16,2026-09-22,
+2% Fat Turkey Mince,Aldi,3.99,500,g,25,,0,0.0319,3.19,2026-09-22,
+Ashfields Chicken Breast Fillets,Aldi,4.49,650,g,21.5,,0.1,0.0321,3.21,2026-09-22,
+Ashfields British Pork Loint Joint,Aldi,9.43,1628,g,18,,0.1,0.0322,3.22,2026-09-22,
+Optimum Nutrition Gold Standard Whey - Banana Cream,Amazon,58.00,2280,g,79,,5,0.0322,3.22,2026-09-22,
+Can Tuna Steak,Aldi,0.99,110,g,27.7,,,0.0325,3.25,2026-09-22,
+Oakhurst - Turkey Rashers,Aldi,1.59,150,g,32.1,,,0.0330,3.30,2026-09-22,
+Optimum Nutrition Gold Standard Whey Protein,Amazon,23.70,900,g,79,,,0.0333,3.33,2026-09-22,
+Protein Chicken Mini Fillets,Aldi,2.99,340,g,25.9,,,0.0340,3.40,2026-09-22,
+Ashfields Beef Mince 20% fat,Aldi,3.25,500,g,18.6,,0.2,0.0349,3.49,2026-09-22,
+Basa Fillets,Aldi,2.39,380,g,17.9,,,0.0351,3.51,2026-09-22,
+FOUR SEASONS Broccoli Florets,Aldi,1.19,1000,g,3.3,,2.6,0.0361,3.61,2026-09-22,
+3% Fat Beef Mince,Aldi,7.79,1000,g,21.5,,,0.0362,3.62,2026-09-22,
+0% Fat Authentic Greek Yogurt,Aldi,1.89,500,g,10.4,,,0.0363,3.63,2026-09-22,
+Brooklea Authentic Greek Yogurt 0% Fat,Aldi,3.69,1000,g,9.8,,3.4,0.0377,3.77,2026-09-22,https://woozy-impala-2.convex.cloud/api/storage/76b0e683-8c96-4d10-815e-29bc13ad2032
+Almonds,Aldi,1.69,200,g,21.2,,,0.0399,3.99,2026-09-22,
+3% Beef Meatballs,Aldi,3.19,340,g,22,,,0.0426,4.26,2026-09-22,
+Tiba - Tempeh,Aldi,1.99,200,g,22,,,0.0452,4.52,2026-09-22,
+Ashfields Lean Diced Beef,Aldi,7.59,700,g,22.5,,0.1,0.0482,4.82,2026-09-22,
+Frozen Salmon Fillets,Aldi,6.99,480,g,28.7,,,0.0507,5.07,2026-09-22,
+Anchovy Fillets in Olive,Aldi,0.65,50,g,25.2,,,0.0516,5.16,2026-09-22,
+Serrano Ham,Aldi,1.89,100,g,33.2,,,0.0569,5.69,2026-09-22,
+Ashfield Beef Brisket,Aldi,13.55,1068,g,18,,0.5,0.0705,7.05,2026-09-22,
+Kefir,Aldi,1.99,750,ml,3.4,,,0.0780,7.80,2026-09-22,
